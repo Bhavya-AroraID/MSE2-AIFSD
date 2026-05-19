@@ -1,6 +1,7 @@
 services:
   - type: web
     name: ai-hr-system
+    plan: free
     env: node
     buildCommand: cd client && npm install && npm run build && cd ../server && npm install
     startCommand: cd server && node index.js
