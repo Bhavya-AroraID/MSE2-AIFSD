@@ -22,7 +22,7 @@ const Employees = () => {
 
   const fetchEmployees = async () => {
     try {
-      const res = await fetch('http://localhost:5000/api/employees', {
+      const res = await fetch('/api/employees', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {
@@ -40,7 +40,7 @@ const Employees = () => {
     e.preventDefault();
     try {
       const payload = { ...formData, skills: formData.skills.split(',').map(s => s.trim()) };
-      const res = await fetch('http://localhost:5000/api/employees', {
+      const res = await fetch('/api/employees', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(payload)
@@ -58,7 +58,7 @@ const Employees = () => {
   const handleDelete = async (id) => {
     if(!window.confirm('Are you sure you want to delete this employee?')) return;
     try {
-      await fetch(`http://localhost:5000/api/employees/${id}`, {
+      await fetch(`/api/employees/${id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -73,7 +73,7 @@ const Employees = () => {
     setGenerating(true);
     try {
       const payload = { employeeId: selectedEmployee._id, ...aiForm };
-      const res = await fetch('http://localhost:5000/api/analytics/recommendation', {
+      const res = await fetch('/api/analytics/recommendation', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
         body: JSON.stringify(payload)
