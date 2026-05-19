@@ -3,7 +3,7 @@ services:
     name: ai-hr-system
     plan: free
     env: node
-    buildCommand: cd client && npm install && npm run build && cd ../server && npm install
+    buildCommand: cd client && npm install --include=dev && npm run build && cd ../server && npm install
     startCommand: cd server && node index.js
     envVars:
       - key: NODE_ENV
